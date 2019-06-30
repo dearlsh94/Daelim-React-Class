@@ -1,0 +1,13 @@
+.btnColor{
+  height: 2rem;
+  opacity: 0.5;
+  transition: all 0.2s;
+  cursor: pointer;
+    border:3px;
+    margin:5px;
+}
+
+.palette {
+  display: flex;
+  justify-content: center;
+}

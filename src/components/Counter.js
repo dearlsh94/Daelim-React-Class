@@ -28,7 +28,7 @@ class Counter extends Component{
 
 function mapStateToProps(state){
     return {
-        value: state.getCounter.counter.number,
+        value: state.counterReducer.number,
     };
 }
 

@@ -27,7 +27,7 @@ const initialState = {
 
 function changeColText(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.CHANGE_COL_TEXT_SUCCESS:
+        case actionTypes.CHANGE_TODOINPUT_COLOR_SUCCESS:
             return {
                 ...state,
                 inputCol: action.data

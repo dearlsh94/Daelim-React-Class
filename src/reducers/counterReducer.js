@@ -1,5 +1,5 @@
 import { actionTypes } from '../actions'
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 
 const counterInitialState = {
     number: 0,
@@ -28,7 +28,7 @@ const counterReducer = (state = counterInitialState, action) => {
     }
 };
 
-
+/*
 const extra = (state = { value: 'this_is_extra_reducer' }, action) => {
     switch(action.type) {
         default:
@@ -40,5 +40,6 @@ const getCounter = combineReducers({
     counter: counterReducer,
     extra
 });
+*/
 
-export default getCounter;
+export default counterReducer;

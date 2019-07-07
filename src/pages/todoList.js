@@ -1,13 +1,13 @@
 import React from 'react';
-import '../css/ContainTodoList.css'
-import Pallete  from '../components/FormPallete';
-import ItemList from '../components/FormTodoItemList';
-import InputItem from '../components/FormInputTodoList';
+import '../css/Template.css'
+import Pallete  from '../components/Pallete';
+import TodoList from '../components/TodoList';
+import TodoInput from '../components/TodoInput';
 
 const TodoListPage = () => {
     return (
         <div className="App">
-            <main className="todo-list-template">
+            <main className="template">
                 <div className="title">
                     ToDo-List
                 </div>
@@ -15,10 +15,10 @@ const TodoListPage = () => {
                     <Pallete/>
                 </section>
                 <section className="form-wrapper">
-                    <InputItem/>
+                    <TodoInput/>
                 </section>
                 <section className="todos-wrapper">
-                    <ItemList/>
+                    <TodoList/>
                 </section>
             </main>
         </div>

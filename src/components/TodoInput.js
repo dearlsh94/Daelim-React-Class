@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import '../css/InputTodoList.css';
+import '../css/TodoInput.css';
 import {bindActionCreators} from 'redux';
 import {addItem, addItemDept1, loadSection} from '../actions';
 import { connect } from 'react-redux';
 
-class InputItem extends Component{
+class TodoInput extends Component{
 
     constructor(props) {
         super(props);
@@ -91,5 +91,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-InputItem = connect(mapStateToProps, mapDispatchToProps)(InputItem);
-export default InputItem;
+TodoInput = connect(mapStateToProps, mapDispatchToProps)(TodoInput);
+export default TodoInput;

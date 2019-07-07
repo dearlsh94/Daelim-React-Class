@@ -1,14 +1,12 @@
 import {combineReducers} from 'redux'
-import getTodoList from './listReducer'
-import changeColText from './colListReducer'
-import daoReducer from './daoReducer'
-import getCounter from './counterReducer'
+import TodoListReducer from './listReducer'
+import changeColText from './colorReducer'
+import counterReducer from './counterReducer'
 
 const reducer = combineReducers({
     changeColText,
-    getTodoList,
-    daoReducer,
-    getCounter
+    TodoListReducer,
+    counterReducer,
 })
 
 export default reducer

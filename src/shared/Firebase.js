@@ -22,7 +22,7 @@ export const initFirebase = () => {
 
 // retrieve from firebase
 // return promise object
-export const getSectionsDB = () => {
+export const loadItem = () => {
 
     return database.ref('/').once('value');
 };

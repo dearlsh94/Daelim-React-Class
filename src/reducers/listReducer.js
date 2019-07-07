@@ -4,8 +4,18 @@ const initialState = {
     sections: []
 };
 
-function getTodoList(state = initialState, action) {
+function TodoListReducer(state = initialState, action) {
     switch (action.type) {
+        case actionTypes.LOAD_SECTIONS_SUCCESS:
+            return {
+                ...state,
+                sections: action.sections
+            };
+        case actionTypes.LOAD_SECTIONS_FAILED:
+            return {
+                ...state,
+                sections: []
+            };
         case actionTypes.ADD_SECTION_SUCCESS:
             console.log("ADD_SECTION_SUCCESS");
             return{
@@ -15,7 +25,7 @@ function getTodoList(state = initialState, action) {
         case actionTypes.ADD_SECTION_FAILED:
             console.log("ADD_SECTION_FAILED");
             return{
-                sections: []
+                ...state,
             };
         case actionTypes.DEL_SECTION_SUCCESS:
             console.log("DEL_SECTION_SUCCESS");
@@ -26,7 +36,7 @@ function getTodoList(state = initialState, action) {
         case actionTypes.DEL_SECTION_FAILED:
             console.log("DEL_SECTION_FAILED");
             return{
-                sections: []
+                ...state,
             };
         case actionTypes.TOGGLE_ITEM_SUCCESS:
             console.log("TOGGLE_ITEM_SUCCESS");
@@ -37,11 +47,11 @@ function getTodoList(state = initialState, action) {
         case actionTypes.TOGGLE_ITEM_FAILED:
             console.log("TOGGLE_ITEM_FAILED");
             return{
-                sections: []
+                ...state,
             };
         default:
             return state
     }
 }
 
-export default getTodoList
+export default TodoListReducer

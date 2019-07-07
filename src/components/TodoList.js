@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TodoItem from './FormTodoItem';
+import TodoItem from './TodoItem';
 import { addItem, removeItem, toggleItem, loadSection } from '../actions';
 import _ from 'lodash';
 
-class ItemList extends Component{
+class TodoList extends Component{
 
     componentDidMount(){
         this.loadSection();
@@ -75,7 +75,7 @@ class ItemList extends Component{
 
 function mapStateToProps(state) {
     return {
-        sections: state.daoReducer.sections
+        sections: state.TodoListReducer.sections,
     }
 }
 
@@ -90,5 +90,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 //send state & dispatch method : Container component to Presentation component
-ItemList = connect(mapStateToProps, mapDispatchToProps)(ItemList);
-export default ItemList;
+TodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default TodoList;

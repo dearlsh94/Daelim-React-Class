@@ -1,28 +1,28 @@
 
 import { put, call, take } from 'redux-saga/effects'
 import { actionTypes, delay } from '../actions'
-import {getSectionsDB, insertItem, insertItemDept1, deleteItem, updateItem } from "../shared/Firebase";
+import {loadItem, insertItem, insertItemDept1, deleteItem, updateItem } from "../shared/Firebase";
 
-function* changeInputColor(color) {
+function* loadSection() {
     try {
         yield call(delay, 100);
+        let sections = yield call(loadItem);
         yield put({
-            type: actionTypes.CHANGE_COL_TEXT_SUCCESS,
-            data: color
+            type: actionTypes.LOAD_SECTIONS_SUCCESS,
+            sections: sections.val()
         });
-
-        return true;
+        return sections.val();
     } catch (err) {
-        yield put({type: actionTypes.CHANGE_COL_TEXT_FAILED});
+        yield put({type: actionTypes.LOAD_SECTIONS_FAILED});
 
         return false;
-}
+    }
 }
 
-export function* changeInputColorFlow() {
+export function* loadSectionFlow() {
     while (true) {
-        let request = yield take(actionTypes.CHANGE_COL_TEXT_REQUEST);
-        yield call(changeInputColor, request.color);
+        yield take(actionTypes.LOAD_SECTIONS_REQUEST);
+        yield call(loadSection);
     }
 }
 
@@ -31,13 +31,15 @@ function* addItem(text, checked, color) {
         yield call(delay, 100);
 
         return insertItem(text, checked, color)
-            .then(() => {
-                return call(getSectionsDB);
-            })
             .then((list) => {
                 put({
                     type: actionTypes.ADD_ITEM_SUCCESS,
                     data: list
+                });
+            })
+            .then(() => {
+                put({
+                    type: actionTypes.LOAD_SECTIONS_REQUEST,
                 });
             })
             .catch((response) => {
@@ -56,13 +58,15 @@ function* addItemDept1(code, text, checked, color) {
         yield call(delay, 100);
 
         return insertItemDept1(code, text, checked, color)
-            .then(() => {
-                return call(getSectionsDB);
-            })
             .then((list) => {
                 put({
                     type: actionTypes.ADD_ITEM_SUCCESS,
                     data: list
+                });
+            })
+            .then(() => {
+                put({
+                    type: actionTypes.LOAD_SECTIONS_REQUEST,
                 });
             })
             .catch((response) => {
@@ -94,13 +98,15 @@ function* removeItem(key) {
         yield call(delay, 100);
 
         return deleteItem(key)
-            .then(() => {
-                return call(getSectionsDB);
-            })
             .then((list) => {
                 put({
                     type: actionTypes.REMOVE_ITEM_SUCCESS,
                     data: list
+                });
+            })
+            .then(() => {
+                put({
+                    type: actionTypes.LOAD_SECTIONS_REQUEST,
                 });
             })
             .catch((response) => {
@@ -125,13 +131,15 @@ function* toggleItem(key, checked) {
         yield call(delay, 100);
 
         return updateItem(key, checked)
-            .then(() => {
-                return call(getSectionsDB);
-            })
             .then((list) => {
                 put({
                     type: actionTypes.TOGGLE_ITEM_SUCCESS,
                     data: list
+                });
+            })
+            .then(() => {
+                put({
+                    type: actionTypes.LOAD_SECTIONS_REQUEST,
                 });
             })
             .catch((response) => {

@@ -6,6 +6,8 @@ const HomePage = () => {
             <h2>
                 홈
             </h2>
+            <li><a href="/counter">Counter</a></li>
+            <li><a href="/todo">TodoList</a></li>
         </div>
     );
 };

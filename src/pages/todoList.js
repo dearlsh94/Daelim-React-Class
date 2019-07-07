@@ -7,6 +7,7 @@ import TodoInput from '../components/TodoInput';
 const TodoListPage = () => {
     return (
         <div className="App">
+            <li><a href="/">Home</a></li>
             <main className="template">
                 <div className="title">
                     ToDo-List

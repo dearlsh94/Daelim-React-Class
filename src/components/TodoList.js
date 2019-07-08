@@ -13,9 +13,11 @@ class TodoList extends Component{
 
     constructor(props) {
         super(props);
+        /*
         this.state = {
             sections : ''
         }
+        */
     }
 
     loadSection(){
@@ -30,7 +32,7 @@ class TodoList extends Component{
     removeItem(key){
         this.props.removeItem(key);
         this.loadSection();
-    }
+    } 
 
     render(){
         const { sections } = this.props;
@@ -51,7 +53,6 @@ class TodoList extends Component{
                     }}
                 />
         );
-
         return (
             <div>
                 <span>

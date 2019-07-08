@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { increment, decrement } from '../actions';
+import {increment, decrement} from '../actions';
+import {bindActionCreators} from "redux";
 
 class Counter extends Component{
 
@@ -8,15 +9,17 @@ class Counter extends Component{
         return (
             <div>
                 <div>
-                    <h1>VALUE: { this.props.value } {this.props.text}</h1>
+                    <h1>VALUE: { this.props.value }</h1>
                 </div>
                 <div>
                     <button type="button"
-                            onClick={ this.props.onIncrement }>
+                            onClick={(e) =>
+                                this.props.increment(this.props.value)}>
                         +
                     </button>
                     <button type="button"
-                            onClick={ this.props.onDecrement }>
+                            onClick={(e) =>
+                                this.props.decrement(this.props.value)}>
                         -
                     </button>
                 </div>
@@ -34,8 +37,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        onIncrement: () => dispatch(increment()),
-        onDecrement: () => dispatch(decrement())
+        increment: bindActionCreators(increment, dispatch),
+        decrement: bindActionCreators(decrement, dispatch),
     }
 }
 

@@ -11,12 +11,12 @@ const counterReducer = (state = counterInitialState, action) => {
         case actionTypes.INCREMENT_SUCCESS:
             return {
                 ...state,
-                number: state.number + state.diff
+                number: action.data
             };
         case actionTypes.DECREMENT_SUCCESS:
             return {
                 ...state,
-                number: state.number - state.diff
+                number: action.data
             };
         case actionTypes.SET_DIFF_SUCCESS:
             return {

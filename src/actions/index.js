@@ -55,15 +55,17 @@ export const actionTypes = {
 };
 
 // counter 관리 함수
-export function increment() {
+export function increment(number) {
     return {
-        type: actionTypes.INCREMENT_REQUEST
+        type: actionTypes.INCREMENT_REQUEST,
+        number
     };
 }
 
-export function decrement() {
+export function decrement(number) {
     return {
-        type: actionTypes.DECREMENT_REQUEST
+        type: actionTypes.DECREMENT_REQUEST,
+        number
     };
 }
 

@@ -77,7 +77,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        //bindActionCreators : dispatch method 까지 연결해주는 redux 라이브러리 함수
         addItem: bindActionCreators(addItem, dispatch),
         removeItem: bindActionCreators(removeItem, dispatch),
         toggleItem: bindActionCreators(toggleItem, dispatch),
@@ -85,6 +84,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-//send state & dispatch method : Container component to Presentation component
 TodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
 export default TodoList;

@@ -8,6 +8,7 @@ const HomePage = () => {
             </h2>
             <li><a href="/counter">Counter</a></li>
             <li><a href="/todo">TodoList</a></li>
+            <li><a href="/src">src</a></li>
         </div>
     );
 };

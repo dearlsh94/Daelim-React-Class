@@ -1,40 +1,28 @@
 import {actionTypes} from '../actions'
 
 const initialState = {
-    sections: []
+    items: []
 };
 
 function TodoListReducer(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.LOAD_SECTIONS_SUCCESS:
-            console.log("LOAD_SECTIONS_SUCCESS");
-            return {
-                ...state,
-                sections: action.sections
-            };
-        case actionTypes.LOAD_SECTIONS_FAILED:
-            console.log("LOAD_SECTIONS_FAILED");
-            return {
-                ...state,
-                sections: []
-            };
         case actionTypes.LOAD_ITEM_SUCCESS:
             console.log("LOAD_ITEM_SUCCESS");
             return {
                 ...state,
-                sections: action.sections
+                items: action.items
             };
         case actionTypes.LOAD_ITEM_FAILED:
             console.log("LOAD_ITEM_FAILED");
             return {
                 ...state,
-                sections: []
+                items: []
             };
         case actionTypes.ADD_ITEM_SUCCESS:
             console.log("ADD_ITEM_SUCCESS");
             return{
                 ...state,
-                sections:action.sections
+                items:action.items
             };
         case actionTypes.ADD_ITEM_FAILED:
             console.log("ADD_ITEM_FAILED");
@@ -45,7 +33,7 @@ function TodoListReducer(state = initialState, action) {
             console.log("REMOVE_ITEM_SUCCESS");
             return{
                 ...state,
-                sections:action.sections
+                items:action.items
             };
         case actionTypes.REMOVE_ITEM_FAILED:
             console.log("REMOVE_ITEM_FAILED");
@@ -56,7 +44,7 @@ function TodoListReducer(state = initialState, action) {
             console.log("TOGGLE_ITEM_SUCCESS");
             return{
                 ...state,
-                sections:action.sections
+                items:action.items
             };
         case actionTypes.TOGGLE_ITEM_FAILED:
             console.log("TOGGLE_ITEM_FAILED");

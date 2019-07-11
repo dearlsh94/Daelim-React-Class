@@ -1,5 +1,5 @@
 import * as firebase from 'firebase'
-import sectionModel from '../models/section'
+import sectionModel from '../models/item'
 
 const projectId = "daelim-react";
 let config = {

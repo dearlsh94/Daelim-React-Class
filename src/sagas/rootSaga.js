@@ -1,6 +1,3 @@
-/**
- * Created by guangqiang on 2017/12/19.
- */
 import { fork } from 'redux-saga/effects'
 import {addItemFlow, removeItemFlow, toggleItemFlow, loadItemFlow} from './listSaga'
 import {changeTodoInputColorFlow} from './colorSaga'

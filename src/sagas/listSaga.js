@@ -6,12 +6,12 @@ import {selectItem, insertItem, insertItemDept1, deleteItem, updateItem } from "
 function* loadItem() {
     try {
         yield call(delay, 100);
-        let sections = yield call(selectItem);
+        let items = yield call(selectItem);
         yield put({
             type: actionTypes.LOAD_ITEM_SUCCESS,
-            sections: sections.val()
+            items: items.val()
         });
-        return sections.val();
+        return items.val();
     } catch (err) {
         yield put({type: actionTypes.LOAD_ITEM_FAILED});
 
@@ -34,7 +34,7 @@ function* addItem(text, checked, color) {
             .then((list) => {
                 put({
                     type: actionTypes.ADD_ITEM_SUCCESS,
-                    sections: list
+                    items: list
                 });
             })
             .then(() => {
@@ -63,7 +63,7 @@ function* addItemDept1(code, text, checked, color) {
             .then((list) => {
                 put({
                     type: actionTypes.ADD_ITEM_SUCCESS,
-                    data: list
+                    items: list
                 });
             })
             .then(() => {
@@ -104,7 +104,7 @@ function* removeItem(key) {
             .then((list) => {
                 put({
                     type: actionTypes.REMOVE_ITEM_SUCCESS,
-                    sections: list
+                    items: list
                 });
             })
             .then(() => {
@@ -137,7 +137,7 @@ function* toggleItem(key, checked) {
             .then((list) => {
                 put({
                     type: actionTypes.TOGGLE_ITEM_SUCCESS,
-                    sections: list
+                    items: list
                 });
             })
             .then(() => {

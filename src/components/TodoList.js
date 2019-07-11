@@ -2,42 +2,37 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TodoItem from './TodoItem';
-import { addItem, removeItem, toggleItem, loadSection } from '../actions';
+import { addItem, removeItem, toggleItem, loadItem } from '../actions';
 import _ from 'lodash';
 
 class TodoList extends Component{
 
     componentDidMount(){
-        this.loadSection();
+        this.loadItem();
     }
 
     constructor(props) {
         super(props);
-        /*
-        this.state = {
-            sections : ''
-        }
-        */
     }
 
-    loadSection(){
-        this.props.loadSection();
+    loadItem(){
+        this.props.loadItem();
     }
 
     toggleItem(key, checked){
         this.props.toggleItem(key, checked);
-        this.loadSection();
+        this.loadItem();
     }
 
     removeItem(key){
         this.props.removeItem(key);
-        this.loadSection();
+        this.loadItem();
     } 
 
     render(){
-        const { sections } = this.props;
+        const { items } = this.props;
         const todoList = _.map(
-            sections, (item) =>
+            items, (item) =>
                 <TodoItem
                     key = {item.key}
                     text = {item.text}
@@ -60,7 +55,7 @@ class TodoList extends Component{
                     <div className="create-button"
                          onClick = {(e) =>{
                              e.stopPropagation();
-                             this.loadSection();
+                             this.loadItem();
                          }}>
                         Load TodoList
                     </div>
@@ -76,7 +71,7 @@ class TodoList extends Component{
 
 function mapStateToProps(state) {
     return {
-        sections: state.TodoListReducer.sections,
+        items: state.TodoListReducer.items,
     }
 }
 
@@ -86,7 +81,7 @@ function mapDispatchToProps(dispatch) {
         addItem: bindActionCreators(addItem, dispatch),
         removeItem: bindActionCreators(removeItem, dispatch),
         toggleItem: bindActionCreators(toggleItem, dispatch),
-        loadSection: bindActionCreators(loadSection, dispatch),
+        loadItem: bindActionCreators(loadItem, dispatch),
     }
 }
 

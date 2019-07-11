@@ -38,21 +38,6 @@ export const actionTypes = {
     TOGGLE_ITEM_FAILED: 'TOGGLE_ITEM_FAILED',
     CHANGE_TODOINPUT_COLOR_FAILED: 'CHANGE_TODOINPUT_COLOR_FAILED',
 
-    // DB 섹션 관리 요청
-    LOAD_SECTIONS_REQUEST: 'LOAD_SECTIONS_REQUEST',
-    ADD_SECTION_REQUEST: 'ADD_SECTION_REQUEST',
-    DEL_SECTION_REQUEST: 'DEL_SECTION_REQUEST',
-
-    // DB 섹션 관리 성공
-    LOAD_SECTIONS_SUCCESS: 'LOAD_SECTIONS_SUCCESS',
-    ADD_SECTION_SUCCESS: 'ADD_SECTION_SUCCESS',
-    DEL_SECTION_SUCCESS: 'DEL_SECTION_SUCCESS',
-
-    // DB 섹션 관리 실패
-    LOAD_SECTIONS_FAILED: 'LOAD_SECTIONS_FAILED',
-    ADD_SECTION_FAILED: 'ADD_SECTION_FAILED',
-    DEL_SECTION_FAILED: 'DEL_SECTION_FAILED',
-
     // 공통
     ERROR: 'ERROR',
 };
@@ -72,13 +57,6 @@ export function decrement(number) {
     };
 }
 
-export function setDiff(value) {
-    return {
-        type: actionTypes.SET_DIFF_REQUEST,
-        diff: value
-    };
-}
-
 // Item 관리 함수
 export function addItem(text, checked, color) {
     return {
@@ -89,7 +67,6 @@ export function addItem(text, checked, color) {
     }
 }
 
-// Item 관리 함수
 export function addItemDept1(code, text, checked, color) {
     return {
         type: actionTypes.ADD_ITEM_REQUEST,
@@ -122,8 +99,7 @@ export function changeTextColor(color) {
     }
 }
 
-// DB 섹션 관리 함수
-export function loadSection() {
+export function loadItem() {
     return {
         type: actionTypes.LOAD_ITEM_REQUEST
     }

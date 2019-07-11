@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../css/TodoInput.css';
 import {bindActionCreators} from 'redux';
-import {addItem, addItemDept1, loadSection} from '../actions';
+import {addItem, addItemDept1, loadItem} from '../actions';
 import { connect } from 'react-redux';
 
 class TodoInput extends Component{
@@ -20,7 +20,7 @@ class TodoInput extends Component{
         this.setState({
             value: ''
         });
-        this.getSection();
+        this.loadItem();
     }
 
     addItemDept1(code, text, checked, color) {
@@ -29,11 +29,11 @@ class TodoInput extends Component{
         this.setState({
             value: ''
         });
-        this.getSection();
+        this.loadItem();
     }
 
-    getSection(){
-        this.props.loadSection();
+    loadItem(){
+        this.props.loadItem();
     }
 
     render(){
@@ -87,7 +87,7 @@ function mapDispatchToProps(dispatch) {
     return {
         addItem: bindActionCreators(addItem, dispatch),
         addItemDept1: bindActionCreators(addItemDept1, dispatch),
-        loadSection: bindActionCreators(loadSection, dispatch)
+        loadItem: bindActionCreators(loadItem, dispatch)
     }
 }
 

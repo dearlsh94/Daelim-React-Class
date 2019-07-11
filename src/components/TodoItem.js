@@ -4,7 +4,7 @@ import '../css/TodoItem.css';
 export default class TodoItem extends Component {
   /*
   shouldComponentUpdate(nextProps, nextState){
-    return this.props.checked !== nextProps.checked;
+    return this.props.checked !== nextProps.checked;  `
   }
   */
 

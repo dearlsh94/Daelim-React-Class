@@ -19,18 +19,21 @@ export const actionTypes = {
 
     // Item 관리 요청
     ADD_ITEM_REQUEST: 'ADD_ITEM_REQUEST',
+    LOAD_ITEM_REQUEST: 'LOAD_ITEM_REQUEST',
     REMOVE_ITEM_REQUEST: 'REMOVE_ITEM_REQUEST',
     TOGGLE_ITEM_REQUEST: 'TOGGLE_ITEM_REQUEST',
     CHANGE_TODOINPUT_COLOR_REQUEST: 'CHANGE_TODOINPUT_COLOR_REQUEST',
 
     // Item 관리 성공
     ADD_ITEM_SUCCESS: 'ADD_ITEM_SUCCESS',
+    LOAD_ITEM_SUCCESS: 'LOAD_ITEM_SUCCESS',
     REMOVE_ITEM_SUCCESS: 'REMOVE_ITEM_SUCCESS',
     TOGGLE_ITEM_SUCCESS: 'TOGGLE_ITEM_SUCCESS',
     CHANGE_TODOINPUT_COLOR_SUCCESS: 'CHANGE_TODOINPUT_COLOR_SUCCESS',
 
     // Item 관리 실패
     ADD_ITEM_FAILED: 'ADD_ITEM_FAILED',
+    LOAD_ITEM_FAILED: 'LOAD_ITEM_FAILED',
     REMOVE_ITEM_FAILED: 'REMOVE_ITEM_FAILED',
     TOGGLE_ITEM_FAILED: 'TOGGLE_ITEM_FAILED',
     CHANGE_TODOINPUT_COLOR_FAILED: 'CHANGE_TODOINPUT_COLOR_FAILED',
@@ -112,7 +115,7 @@ export function toggleItem(key, checked) {
     }
 }
 
-export function changeColText(color) {
+export function changeTextColor(color) {
     return {
         type: actionTypes.CHANGE_TODOINPUT_COLOR_REQUEST,
         color
@@ -122,7 +125,7 @@ export function changeColText(color) {
 // DB 섹션 관리 함수
 export function loadSection() {
     return {
-        type: actionTypes.LOAD_SECTIONS_REQUEST
+        type: actionTypes.LOAD_ITEM_REQUEST
     }
 }
 

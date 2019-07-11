@@ -1,5 +1,5 @@
 
-import { put, call, take } from 'redux-saga/effects'
+import {put, call, take} from 'redux-saga/effects'
 import { actionTypes, delay } from '../actions'
 
 function* increase(number) {

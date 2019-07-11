@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import '../css/Pallete.css';
 import {bindActionCreators} from "redux";
-import {changeColText} from "../actions";
+import {changeTextColor} from "../actions";
 import { connect } from 'react-redux';
 
 class Pallete extends Component{
 
 
     changeColor(color) {
-        this.props.changecolInputText(color)
+        this.props.changeTextColor(color)
     }
 
     render(){
@@ -40,13 +40,13 @@ class Pallete extends Component{
 
 function mapStateToProps(state) {
     return {
-        colors: state.changeColText.list
+        colors: state.changeTextColor.list
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        changecolInputText: bindActionCreators(changeColText, dispatch)
+        changeTextColor: bindActionCreators(changeTextColor, dispatch)
     }
 }
 

@@ -22,7 +22,7 @@ export const initFirebase = () => {
 
 // retrieve from firebase
 // return promise object
-export const loadItem = () => {
+export const selectItem = () => {
 
     return database.ref('/').once('value');
 };

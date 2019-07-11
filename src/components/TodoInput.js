@@ -79,7 +79,7 @@ class TodoInput extends Component{
 function mapStateToProps(state) {
     return {
         text: '',
-        color: state.changeColText.inputCol
+        color: state.changeTextColor.inputCol
     }
 }
 

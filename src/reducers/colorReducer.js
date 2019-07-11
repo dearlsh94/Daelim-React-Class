@@ -25,7 +25,7 @@ const initialState = {
     inputCol: defaultCol
 };
 
-function changeColText(state = initialState, action) {
+function changeTextColor(state = initialState, action) {
     switch (action.type) {
         case actionTypes.CHANGE_TODOINPUT_COLOR_SUCCESS:
             return {
@@ -37,4 +37,4 @@ function changeColText(state = initialState, action) {
     }
 }
 
-export default changeColText
+export default changeTextColor

@@ -1,28 +1,28 @@
 
 import { put, call, take } from 'redux-saga/effects'
 import { actionTypes, delay } from '../actions'
-import {loadItem, insertItem, insertItemDept1, deleteItem, updateItem } from "../shared/Firebase";
+import {selectItem, insertItem, insertItemDept1, deleteItem, updateItem } from "../shared/Firebase";
 
-function* loadSection() {
+function* loadItem() {
     try {
         yield call(delay, 100);
-        let sections = yield call(loadItem);
+        let sections = yield call(selectItem);
         yield put({
-            type: actionTypes.LOAD_SECTIONS_SUCCESS,
+            type: actionTypes.LOAD_ITEM_SUCCESS,
             sections: sections.val()
         });
         return sections.val();
     } catch (err) {
-        yield put({type: actionTypes.LOAD_SECTIONS_FAILED});
+        yield put({type: actionTypes.LOAD_ITEM_FAILED});
 
         return false;
     }
 }
 
-export function* loadSectionFlow() {
+export function* loadItemFlow() {
     while (true) {
-        yield take(actionTypes.LOAD_SECTIONS_REQUEST);
-        yield call(loadSection);
+        yield take(actionTypes.LOAD_ITEM_REQUEST);
+        yield call(loadItem);
     }
 }
 
@@ -34,16 +34,18 @@ function* addItem(text, checked, color) {
             .then((list) => {
                 put({
                     type: actionTypes.ADD_ITEM_SUCCESS,
-                    data: list
+                    sections: list
                 });
             })
             .then(() => {
                 put({
-                    type: actionTypes.LOAD_SECTIONS_REQUEST,
+                    type: actionTypes.LOAD_ITEM_SUCCESS,
                 });
             })
             .catch((response) => {
                 console.log(response);
+                put({type: actionTypes.ADD_SECTION_FAILED});
+                return false;
             });
     } catch (err) {
         console.log(err);
@@ -66,17 +68,18 @@ function* addItemDept1(code, text, checked, color) {
             })
             .then(() => {
                 put({
-                    type: actionTypes.LOAD_SECTIONS_REQUEST,
+                    type: actionTypes.LOAD_ITEM_SUCCESS,
                 });
             })
             .catch((response) => {
                 console.log(response);
+                put({type: actionTypes.ADD_SECTION_FAILED});
+
+                return false;
             });
     } catch (err) {
         console.log(err);
-        yield put({type: actionTypes.ADD_SECTION_FAILED});
 
-        return false;
     }
 }
 
@@ -101,12 +104,12 @@ function* removeItem(key) {
             .then((list) => {
                 put({
                     type: actionTypes.REMOVE_ITEM_SUCCESS,
-                    data: list
+                    sections: list
                 });
             })
             .then(() => {
                 put({
-                    type: actionTypes.LOAD_SECTIONS_REQUEST,
+                    type: actionTypes.LOAD_ITEM_SUCCESS,
                 });
             })
             .catch((response) => {
@@ -134,12 +137,12 @@ function* toggleItem(key, checked) {
             .then((list) => {
                 put({
                     type: actionTypes.TOGGLE_ITEM_SUCCESS,
-                    data: list
+                    sections: list
                 });
             })
             .then(() => {
                 put({
-                    type: actionTypes.LOAD_SECTIONS_REQUEST,
+                    type: actionTypes.LOAD_ITEM_SUCCESS,
                 });
             })
             .catch((response) => {

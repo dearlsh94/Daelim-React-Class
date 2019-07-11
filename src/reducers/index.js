@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
 import TodoListReducer from './listReducer'
-import changeColText from './colorReducer'
+import changeTextColor from './colorReducer'
 import counterReducer from './counterReducer'
 
 const reducer = combineReducers({
-    changeColText,
+    changeTextColor,
     TodoListReducer,
     counterReducer,
 })

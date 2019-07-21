@@ -21,12 +21,12 @@ class TodoList extends Component{
 
     toggleItem(key, checked){
         this.props.toggleItem(key, checked);
-        this.loadItem();
+        // this.loadItem();
     }
 
     removeItem(key){
         this.props.removeItem(key);
-        this.loadItem();
+        //this.loadItem();
     } 
 
     render(){

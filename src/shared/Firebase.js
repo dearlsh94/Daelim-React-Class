@@ -33,7 +33,21 @@ export const insertItem = (text, checked, color) => {
     let key = database.ref(url).push().key;
     let model = sectionModel(key, text, checked, color);
 
-    return database.ref(url + key).set(model);
+    return new Promise((resolve, reject) => {
+        database.ref(url + key)
+            .set(model, (err) => {
+                if (err) {
+                    console.log(err);
+
+                    reject(err);
+                }
+                else {
+                    console.log('data inserted successfully');
+
+                    resolve(true);
+                }
+            });
+    });
 };
 
 // add new section in dept 1 code
@@ -42,15 +56,57 @@ export const insertItemDept1 = (code, text, checked, color) => {
     let key = database.ref(url).push().key;
     let model = sectionModel(key, text, checked, color);
 
-    return database.ref(url + key).set(model);
+    return new Promise((resolve, reject) => {
+       database.ref(url + key)
+           .set(model, (err) => {
+               if (err) {
+                   console.log(err);
+
+                   reject(err);
+               }
+               else {
+                   console.log('data inserted successfully');
+
+                   resolve(true);
+               }
+           })
+    });
 };
 
 export const deleteItem = (key) => {
-    return database.ref('/' + key).remove()
+    return new Promise((resolve, reject) => {
+        database.ref('/' + key)
+            .remove((err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    console.log('data deleted successfully');
+
+                    resolve(true);
+                }
+            })
+
+    });
 };
 
 export const updateItem = (key, checked) => {
-    return database.ref('/' + key).update({
-        checked: !checked
+    return new Promise((resolve, reject) => {
+        database.ref('/' + key)
+            .update({
+                checked: !checked
+            }, ((err) => {
+                if (err) {
+                    console.log(err);
+
+                    reject(err);
+                }
+                else {
+                    console.log('data saved successfully');
+
+                    resolve(true);
+                }
+            })
+        );
     })
-};
+}

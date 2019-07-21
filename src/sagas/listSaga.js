@@ -30,26 +30,30 @@ function* addItem(text, checked, color) {
     try {
         yield call(delay, 100);
 
-        return insertItem(text, checked, color)
-            .then((list) => {
-                put({
-                    type: actionTypes.ADD_ITEM_SUCCESS,
-                    items: list
-                });
+        const res = yield insertItem(text, checked, color)
+            .then((res) => {
+                console.log(res);
+
+                return res;
             })
-            .then(() => {
-                put({
-                    type: actionTypes.LOAD_ITEM_SUCCESS,
-                });
-            })
-            .catch((response) => {
-                console.log(response);
-                put({type: actionTypes.ADD_SECTION_FAILED});
+            .catch((err) => {
+                throw new Error('insert Item failed cause : ' + err);
+
                 return false;
             });
+
+        if (res) {
+            yield put({
+                type: actionTypes.ADD_ITEM_SUCCESS,
+            });
+            yield put({
+                type: actionTypes.LOAD_ITEM_REQUEST,
+            });
+        }
+
     } catch (err) {
         console.log(err);
-        yield put({type: actionTypes.ADD_SECTION_FAILED});
+        yield put({type: actionTypes.ADD_ITEM_FAILED});
 
         return false;
     }
@@ -59,27 +63,33 @@ function* addItemDept1(code, text, checked, color) {
     try {
         yield call(delay, 100);
 
-        return insertItemDept1(code, text, checked, color)
-            .then((list) => {
-                put({
-                    type: actionTypes.ADD_ITEM_SUCCESS,
-                    items: list
-                });
+        const res = yield insertItemDept1(code, text, checked, color)
+            .then((res) => {
+                console.log(res);
+
+                return res;
             })
-            .then(() => {
-                put({
-                    type: actionTypes.LOAD_ITEM_SUCCESS,
-                });
-            })
-            .catch((response) => {
-                console.log(response);
-                put({type: actionTypes.ADD_SECTION_FAILED});
+            .catch((err) => {
+                throw new Error('insert Item failed cause : ' + err);
 
                 return false;
             });
+
+        if (res) {
+            yield put({
+                type: actionTypes.ADD_ITEM_SUCCESS,
+            });
+            yield put({
+                type: actionTypes.LOAD_ITEM_REQUEST,
+            });
+        }
+
     } catch (err) {
         console.log(err);
 
+        yield put({
+            type: actionTypes.ADD_ITEM_FAILED,
+        });
     }
 }
 
@@ -100,22 +110,30 @@ function* removeItem(key) {
     try {
         yield call(delay, 100);
 
-        return deleteItem(key)
-            .then((list) => {
-                put({
-                    type: actionTypes.REMOVE_ITEM_SUCCESS,
-                    items: list
-                });
+        const res = yield deleteItem(key)
+            .then((res) => {
+                console.log(res);
+
+                return res;
             })
-            .then(() => {
-                put({
-                    type: actionTypes.LOAD_ITEM_SUCCESS,
-                });
-            })
-            .catch((response) => {
-                console.log(response);
+            .catch((err) => {
+                throw new Error('toogle Item failed cause : ' + err);
+
+                return false;
             });
+
+        if (res) {
+            yield put({
+                type: actionTypes.REMOVE_ITEM_SUCCESS,
+            });
+            yield put({
+                type: actionTypes.LOAD_ITEM_REQUEST,
+            });
+        }
+
     } catch (err) {
+        console.log(err);
+
         yield put({type: actionTypes.REMOVE_ITEM_FAILED});
 
         return false;
@@ -133,22 +151,30 @@ function* toggleItem(key, checked) {
     try {
         yield call(delay, 100);
 
-        return updateItem(key, checked)
-            .then((list) => {
-                put({
-                    type: actionTypes.TOGGLE_ITEM_SUCCESS,
-                    items: list
-                });
+        const res = yield updateItem(key, checked)
+            .then((res) => {
+                console.log(res);
+
+                return res;
             })
-            .then(() => {
-                put({
-                    type: actionTypes.LOAD_ITEM_SUCCESS,
-                });
-            })
-            .catch((response) => {
-                console.log(response);
+            .catch((err) => {
+                throw new Error('toogle Item failed cause : ' + err);
+
+                return false;
             });
+
+        if (res) {
+            yield put({
+                type: actionTypes.TOGGLE_ITEM_SUCCESS,
+            });
+            yield put({
+                type: actionTypes.LOAD_ITEM_REQUEST,
+            });
+        }
+
     } catch (err) {
+        console.log(err);
+
         yield put({type: actionTypes.TOGGLE_ITEM_FAILED});
 
         return false;

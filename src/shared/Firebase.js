@@ -1,14 +1,14 @@
 import * as firebase from 'firebase'
 import sectionModel from '../models/item'
 
-const projectId = "daelim-react";
+const projectId = "";
 let config = {
-    apiKey: "AAAAToJ7JLI:APA91bH_WPavxJD4KQskKHX-AkuiAvrtFZfPCKsn4c0K0GEVQhFMLxfoJUbuir-qlK4hbXDcJh5IR0Ax7bltc0cUzmEO0UIgBp2DKAk0WzOIL1PyBYDGBXKnPpAgA0-g63gh9n7XSg0Y",
+    apiKey: "",
     authDomain: `${projectId}.firebaseapp.com`,
     databaseURL: `https://${projectId}.firebaseio.com`,
     projectId: `${projectId}`,
     storageBucket: `${projectId}.appspot.com`,
-    messagingSenderId: "337196557490"
+    messagingSenderId: ""
 };
 let database;
 
